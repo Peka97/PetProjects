@@ -1,6 +1,8 @@
 import pygame
 
 from .fields import GameFields
+from .snake import SnakeHeads, SnakeBodies, SnakeTails
+from .fruit import Fruits
 
 
 class Game:
@@ -17,16 +19,16 @@ class Game:
 		self.score_count = 0
 
 		self.game_field = GameFields()
-		self.objects = []
+		self.objects = [SnakeHeads(), SnakeBodies(), SnakeTails(), Fruits()]
 
 		self.clock = pygame.time.Clock()
 
 	def blit_and_update(self):
 		self.game_field.draw(self.screen)
 		for obj in self.objects:
-			pass
+			self.screen.blit(obj.image, obj.rect)
 		self.screen.blit(self.game_field.update_score(self.score_count)[0],
-						self.game_field.update_score(self.score_count)[1])
+						 self.game_field.update_score(self.score_count)[1])
 		pygame.display.update()
 		self.clock.tick(self.FPS)
 
