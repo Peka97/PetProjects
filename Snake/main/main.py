@@ -1,6 +1,7 @@
 import pygame
 
-from bin.engine import mainloop
+from bin.engine import Game
 
 if __name__ == '__main__':
-	mainloop()
+	game = Game()
+	game.mainloop()
